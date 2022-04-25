@@ -1,0 +1,192 @@
+﻿@model IEnumerable<PetAdopt.Models.AdoptApplication>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateRegistered)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateApproved)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateRejected)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateDeleted)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PeopleAtHome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ChildrenAtHome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ChildrenAges)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HomeAntiguety)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LandlordConsentForPets)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LandlordInformation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Strata)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MovingNextSixMonths)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PetIsAGift)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TimeThoughtToGetAPet)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.WhyAPet)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FoodEstimateExpense)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MedicalEstimateExpense)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MiscEstimateExpense)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmergencyEstimateExpense)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.InitialsProvideEssentials)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.InitialsNurturingEnvironment)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.InitialsAnimalControlByLaw)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.InitialsContactAnimalShelter)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Initials14DaysReturn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SignatureApplication)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.userEmail)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateRegistered)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateApproved)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateRejected)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateDeleted)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PeopleAtHome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ChildrenAtHome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ChildrenAges)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HomeAntiguety)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LandlordConsentForPets)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LandlordInformation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Strata)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MovingNextSixMonths)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PetIsAGift)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TimeThoughtToGetAPet)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WhyAPet)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FoodEstimateExpense)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MedicalEstimateExpense)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MiscEstimateExpense)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmergencyEstimateExpense)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InitialsProvideEssentials)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InitialsNurturingEnvironment)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InitialsAnimalControlByLaw)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InitialsContactAnimalShelter)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Initials14DaysReturn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SignatureApplication)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.userEmail)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
