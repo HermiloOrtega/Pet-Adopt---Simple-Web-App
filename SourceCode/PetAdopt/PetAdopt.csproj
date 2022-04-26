@@ -6,6 +6,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="wwwroot\NewFolder1\**" />
+    <Compile Remove="wwwroot\NewFolder\**" />
+    <Content Remove="wwwroot\NewFolder1\**" />
+    <Content Remove="wwwroot\NewFolder\**" />
+    <EmbeddedResource Remove="wwwroot\NewFolder1\**" />
+    <EmbeddedResource Remove="wwwroot\NewFolder\**" />
+    <None Remove="wwwroot\NewFolder1\**" />
+    <None Remove="wwwroot\NewFolder\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Data\Migrations\20220425124753_Initial.cs" />
+    <Compile Remove="Data\Migrations\20220425124753_Initial.Designer.cs" />
     <Compile Remove="Data\Migrations\20220425125659_updatePetTable.cs" />
     <Compile Remove="Data\Migrations\20220425125659_updatePetTable.Designer.cs" />
     <Compile Remove="Data\Migrations\20220425125811_UdatePtTable.cs" />
@@ -14,6 +27,20 @@
     <Compile Remove="Data\Migrations\20220425125915_UpdatePetTable.Designer.cs" />
     <Compile Remove="Data\Migrations\20220425130106_UdatePetTable.cs" />
     <Compile Remove="Data\Migrations\20220425130106_UdatePetTable.Designer.cs" />
+    <Compile Remove="Data\Migrations\20220425191223_InitialTables.cs" />
+    <Compile Remove="Data\Migrations\20220425191223_InitialTables.Designer.cs" />
+    <Compile Remove="Data\Migrations\20220425202022_InitialPetAndAdoptTables.cs" />
+    <Compile Remove="Data\Migrations\20220425202022_InitialPetAndAdoptTables.Designer.cs" />
+    <Compile Remove="Data\Migrations\20220425203011_InitialTales.cs" />
+    <Compile Remove="Data\Migrations\20220425203011_InitialTales.Designer.cs" />
+    <Compile Remove="Data\Migrations\20220425203040_InitialTables.cs" />
+    <Compile Remove="Data\Migrations\20220425203040_InitialTables.Designer.cs" />
+    <Compile Remove="Data\Migrations\20220425221732_addTables.cs" />
+    <Compile Remove="Data\Migrations\20220425221732_addTables.Designer.cs" />
+    <Compile Remove="Data\Migrations\20220425231514_InitialTables.cs" />
+    <Compile Remove="Data\Migrations\20220425231514_InitialTables.Designer.cs" />
+    <Compile Remove="Data\Migrations\20220426000111_InitialTables.cs" />
+    <Compile Remove="Data\Migrations\20220426000111_InitialTables.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -23,6 +50,10 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.24" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.24" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\images\" />
   </ItemGroup>
 
 </Project>

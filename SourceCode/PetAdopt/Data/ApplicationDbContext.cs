@@ -14,6 +14,6 @@ namespace PetAdopt.Data
         {
         }
         public DbSet<Pet> Pet { get; set; }
-        public DbSet<AdoptApplication> AdoptApplication { get; set; }
+        public DbSet<AdoptPet> AdoptApplication { get; set; }
     }
 }

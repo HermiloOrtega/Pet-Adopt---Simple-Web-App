@@ -10,85 +10,85 @@ using PetAdopt.Models;
 
 namespace PetAdopt.Controllers
 {
-    public class AdoptApplicationsController : Controller
+    public class AdoptPetsController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public AdoptApplicationsController(ApplicationDbContext context)
+        public AdoptPetsController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // GET: AdoptApplications
+        // GET: AdoptPets
         public async Task<IActionResult> Index()
         {
             return View(await _context.AdoptApplication.ToListAsync());
         }
 
-        // GET: AdoptApplications/Details/5
-        public async Task<IActionResult> Details(string id)
+        // GET: AdoptPets/Details/5
+        public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var adoptApplication = await _context.AdoptApplication
+            var adoptPet = await _context.AdoptApplication
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (adoptApplication == null)
+            if (adoptPet == null)
             {
                 return NotFound();
             }
 
-            return View(adoptApplication);
+            return View(adoptPet);
         }
 
-        // GET: AdoptApplications/Create
+        // GET: AdoptPets/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: AdoptApplications/Create
+        // POST: AdoptPets/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Status,DateRegistered,DateApproved,DateRejected,DateDeleted,PeopleAtHome,ChildrenAtHome,ChildrenAges,HomeAntiguety,LandlordConsentForPets,LandlordInformation,Strata,MovingNextSixMonths,PetIsAGift,TimeThoughtToGetAPet,WhyAPet,FoodEstimateExpense,MedicalEstimateExpense,MiscEstimateExpense,EmergencyEstimateExpense,InitialsProvideEssentials,InitialsNurturingEnvironment,InitialsAnimalControlByLaw,InitialsContactAnimalShelter,Initials14DaysReturn,SignatureApplication,userEmail")] AdoptApplication adoptApplication)
+        public async Task<IActionResult> Create([Bind("Id,Status,DateRegistered")] AdoptPet adoptPet)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(adoptApplication);
+                _context.Add(adoptPet);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(adoptApplication);
+            return View(adoptPet);
         }
 
-        // GET: AdoptApplications/Edit/5
-        public async Task<IActionResult> Edit(string id)
+        // GET: AdoptPets/Edit/5
+        public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var adoptApplication = await _context.AdoptApplication.FindAsync(id);
-            if (adoptApplication == null)
+            var adoptPet = await _context.AdoptApplication.FindAsync(id);
+            if (adoptPet == null)
             {
                 return NotFound();
             }
-            return View(adoptApplication);
+            return View(adoptPet);
         }
 
-        // POST: AdoptApplications/Edit/5
+        // POST: AdoptPets/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("Id,Status,DateRegistered,DateApproved,DateRejected,DateDeleted,PeopleAtHome,ChildrenAtHome,ChildrenAges,HomeAntiguety,LandlordConsentForPets,LandlordInformation,Strata,MovingNextSixMonths,PetIsAGift,TimeThoughtToGetAPet,WhyAPet,FoodEstimateExpense,MedicalEstimateExpense,MiscEstimateExpense,EmergencyEstimateExpense,InitialsProvideEssentials,InitialsNurturingEnvironment,InitialsAnimalControlByLaw,InitialsContactAnimalShelter,Initials14DaysReturn,SignatureApplication,userEmail")] AdoptApplication adoptApplication)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Status,DateRegistered")] AdoptPet adoptPet)
         {
-            if (id != adoptApplication.Id)
+            if (id != adoptPet.Id)
             {
                 return NotFound();
             }
@@ -97,12 +97,12 @@ namespace PetAdopt.Controllers
             {
                 try
                 {
-                    _context.Update(adoptApplication);
+                    _context.Update(adoptPet);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!AdoptApplicationExists(adoptApplication.Id))
+                    if (!AdoptPetExists(adoptPet.Id))
                     {
                         return NotFound();
                     }
@@ -113,39 +113,39 @@ namespace PetAdopt.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(adoptApplication);
+            return View(adoptPet);
         }
 
-        // GET: AdoptApplications/Delete/5
-        public async Task<IActionResult> Delete(string id)
+        // GET: AdoptPets/Delete/5
+        public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var adoptApplication = await _context.AdoptApplication
+            var adoptPet = await _context.AdoptApplication
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (adoptApplication == null)
+            if (adoptPet == null)
             {
                 return NotFound();
             }
 
-            return View(adoptApplication);
+            return View(adoptPet);
         }
 
-        // POST: AdoptApplications/Delete/5
+        // POST: AdoptPets/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(string id)
+        public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var adoptApplication = await _context.AdoptApplication.FindAsync(id);
-            _context.AdoptApplication.Remove(adoptApplication);
+            var adoptPet = await _context.AdoptApplication.FindAsync(id);
+            _context.AdoptApplication.Remove(adoptPet);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool AdoptApplicationExists(string id)
+        private bool AdoptPetExists(int id)
         {
             return _context.AdoptApplication.Any(e => e.Id == id);
         }

@@ -412,11 +412,11 @@
 \\Mac\Dropbox\Personal\5_Study\2_Apps\SilverwarePos_Interview\SourceCode\PetAdopt\obj\Debug\netcoreapp3.1\PetAdopt.dll
 \\Mac\Dropbox\Personal\5_Study\2_Apps\SilverwarePos_Interview\SourceCode\PetAdopt\obj\Debug\netcoreapp3.1\PetAdopt.pdb
 \\Mac\Dropbox\Personal\5_Study\2_Apps\SilverwarePos_Interview\SourceCode\PetAdopt\obj\Debug\netcoreapp3.1\PetAdopt.genruntimeconfig.cache
-\\Mac\Dropbox\Personal\5_Study\2_Apps\SilverwarePos_Interview\SourceCode\PetAdopt\obj\Debug\netcoreapp3.1\Razor\Views\AdoptApplications\Create.cshtml.g.cs
-\\Mac\Dropbox\Personal\5_Study\2_Apps\SilverwarePos_Interview\SourceCode\PetAdopt\obj\Debug\netcoreapp3.1\Razor\Views\AdoptApplications\Delete.cshtml.g.cs
-\\Mac\Dropbox\Personal\5_Study\2_Apps\SilverwarePos_Interview\SourceCode\PetAdopt\obj\Debug\netcoreapp3.1\Razor\Views\AdoptApplications\Details.cshtml.g.cs
-\\Mac\Dropbox\Personal\5_Study\2_Apps\SilverwarePos_Interview\SourceCode\PetAdopt\obj\Debug\netcoreapp3.1\Razor\Views\AdoptApplications\Edit.cshtml.g.cs
-\\Mac\Dropbox\Personal\5_Study\2_Apps\SilverwarePos_Interview\SourceCode\PetAdopt\obj\Debug\netcoreapp3.1\Razor\Views\AdoptApplications\Index.cshtml.g.cs
+\\Mac\Dropbox\Personal\5_Study\2_Apps\SilverwarePos_Interview\SourceCode\PetAdopt\obj\Debug\netcoreapp3.1\Razor\Views\AdoptPets\Create.cshtml.g.cs
+\\Mac\Dropbox\Personal\5_Study\2_Apps\SilverwarePos_Interview\SourceCode\PetAdopt\obj\Debug\netcoreapp3.1\Razor\Views\AdoptPets\Delete.cshtml.g.cs
+\\Mac\Dropbox\Personal\5_Study\2_Apps\SilverwarePos_Interview\SourceCode\PetAdopt\obj\Debug\netcoreapp3.1\Razor\Views\AdoptPets\Details.cshtml.g.cs
+\\Mac\Dropbox\Personal\5_Study\2_Apps\SilverwarePos_Interview\SourceCode\PetAdopt\obj\Debug\netcoreapp3.1\Razor\Views\AdoptPets\Edit.cshtml.g.cs
+\\Mac\Dropbox\Personal\5_Study\2_Apps\SilverwarePos_Interview\SourceCode\PetAdopt\obj\Debug\netcoreapp3.1\Razor\Views\AdoptPets\Index.cshtml.g.cs
 \\Mac\Dropbox\Personal\5_Study\2_Apps\SilverwarePos_Interview\SourceCode\PetAdopt\obj\Debug\netcoreapp3.1\Razor\Views\Pets\Create.cshtml.g.cs
 \\Mac\Dropbox\Personal\5_Study\2_Apps\SilverwarePos_Interview\SourceCode\PetAdopt\obj\Debug\netcoreapp3.1\Razor\Views\Pets\Delete.cshtml.g.cs
 \\Mac\Dropbox\Personal\5_Study\2_Apps\SilverwarePos_Interview\SourceCode\PetAdopt\obj\Debug\netcoreapp3.1\Razor\Views\Pets\Details.cshtml.g.cs

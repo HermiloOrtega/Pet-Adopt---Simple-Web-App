@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PetAdopt.Data;
 
 namespace PetAdopt.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220426023622_InitialTables")]
+    partial class InitialTables
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -226,91 +228,14 @@ namespace PetAdopt.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("ChildrenAges")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("ChildrenAtHome")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime?>("DateApproved")
-                        .HasColumnType("datetime2");
-
                     b.Property<DateTime>("DateRegistered")
                         .HasColumnType("datetime2");
-
-                    b.Property<double>("EmergencyEstimateExpense")
-                        .HasColumnType("float");
-
-                    b.Property<double>("FoodEstimateExpense")
-                        .HasColumnType("float");
-
-                    b.Property<int>("HomeAntiguety")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Initials14DaysReturn")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("InitialsAnimalControlByLaw")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("InitialsContactAnimalShelter")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("InitialsNurturingEnvironment")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("InitialsProvideEssentials")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("LandlordConsentForPets")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("LandlordInformation")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<double>("MedicalEstimateExpense")
-                        .HasColumnType("float");
-
-                    b.Property<double>("MiscEstimateExpense")
-                        .HasColumnType("float");
-
-                    b.Property<bool>("MovingNextSixMonths")
-                        .HasColumnType("bit");
-
-                    b.Property<int>("PeopleAtHome")
-                        .HasColumnType("int");
 
                     b.Property<int>("PetId")
                         .HasColumnType("int");
 
-                    b.Property<bool>("PetIsAGift")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("SignatureApplication")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("Status")
                         .HasColumnType("int");
-
-                    b.Property<bool>("Strata")
-                        .HasColumnType("bit");
-
-                    b.Property<int>("TimeThoughtToGetAPet")
-                        .HasColumnType("int");
-
-                    b.Property<string>("WhyAPet")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("userEmail")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -329,46 +254,16 @@ namespace PetAdopt.Data.Migrations
                     b.Property<int>("Adopted")
                         .HasColumnType("int");
 
-                    b.Property<double?>("AdoptionFee")
-                        .HasColumnType("float");
-
-                    b.Property<int?>("Age")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Breed")
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
-
-                    b.Property<string>("Color")
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(200)")
-                        .HasMaxLength(200);
-
-                    b.Property<int>("Gender")
-                        .HasColumnType("int");
-
-                    b.Property<int>("HouseTrained")
-                        .HasColumnType("int");
+                    b.Property<DateTime>("DateRegistered")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Location")
                         .IsRequired()
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(150)")
-                        .HasMaxLength(150);
-
-                    b.Property<string>("PhotoURL")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Size")
-                        .HasColumnType("int");
 
                     b.Property<int>("Type")
                         .HasColumnType("int");

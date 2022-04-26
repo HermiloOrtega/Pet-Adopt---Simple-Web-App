@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -25,6 +26,7 @@ namespace PetAdopt.Controllers
             return View(await _context.Pet.ToListAsync());
         }
 
+        [Authorize]
         // GET: Pets/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -33,16 +35,53 @@ namespace PetAdopt.Controllers
                 return NotFound();
             }
 
-            var pet = await _context.Pet
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (pet == null)
-            {
-                return NotFound();
-            }
+            Pet pet = await _context.Pet.FirstOrDefaultAsync(m => m.Id == id);
+            if (pet == null) return NotFound();
 
-            return View(pet);
+            PetDetailsViewModel viewModel = await getPetDetailsViewModelFromPet(pet);
+
+            return View(viewModel);
         }
 
+        [Authorize]
+        // POST: Pet/Details
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Details([Bind("Type,Adopted,Name,Location,PhotoURL,Breed,Color,Age,Size,Gender,Description,HouseTrained,AdoptionFee")] PetDetailsViewModel viewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                AdoptPet adopt = new AdoptPet();
+
+                adopt.Status = (AdoptPet.ApplicationStatus)viewModel.Status;
+                adopt.DateRegistered = viewModel.DateRegistered;
+
+                Pet pet = await _context.Pet.FirstOrDefaultAsync(m => m.Id == viewModel.PetID);
+                if (pet == null) return NotFound();
+
+                adopt.Pet = pet;
+                _context.AdoptApplication.Add(adopt);
+                await _context.SaveChangesAsync();
+
+                viewModel = await getPetDetailsViewModelFromPet(pet);
+            }
+            return View(viewModel);
+        }
+
+        private async Task<PetDetailsViewModel> getPetDetailsViewModelFromPet(Pet pet)
+        {
+            PetDetailsViewModel viewModel = new PetDetailsViewModel();
+            viewModel.Pet = pet;
+
+            List<AdoptPet> adoptPets = await _context.AdoptApplication
+                .Where(m => m.Pet == pet).ToListAsync();
+
+            viewModel.AdoptPets = adoptPets;
+
+            return viewModel;
+        }
+
+        [Authorize]
         // GET: Pets/Create
         public IActionResult Create()
         {
@@ -54,7 +93,7 @@ namespace PetAdopt.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Status,PetType,Adopted,DateRegistered,DateDeleted,DateAdopted,Name,Location,Breed,Color,Age,Size,Gender,Description,HouseTrained,AdoptionFee,PhotoUrl")] Pet pet)
+        public async Task<IActionResult> Create([Bind("Id,Type,Adopted,Name,Location,PhotoURL,Breed,Color,Age,Size,Gender,Description,HouseTrained,AdoptionFee")] Pet pet)
         {
             if (ModelState.IsValid)
             {
@@ -65,6 +104,7 @@ namespace PetAdopt.Controllers
             return View(pet);
         }
 
+        [Authorize]
         // GET: Pets/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -86,7 +126,7 @@ namespace PetAdopt.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Status,PetType,Adopted,DateRegistered,DateDeleted,DateAdopted,Name,Location,Breed,Color,Age,Size,Gender,Description,HouseTrained,AdoptionFee,PhotoUrl")] Pet pet)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Type,Adopted,Name,Location,PhotoURL,Breed,Color,Age,Size,Gender,Description,HouseTrained,AdoptionFee")] Pet pet)
         {
             if (id != pet.Id)
             {
@@ -116,6 +156,7 @@ namespace PetAdopt.Controllers
             return View(pet);
         }
 
+        [Authorize]
         // GET: Pets/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
@@ -134,6 +175,7 @@ namespace PetAdopt.Controllers
             return View(pet);
         }
 
+        [Authorize]
         // POST: Pets/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]

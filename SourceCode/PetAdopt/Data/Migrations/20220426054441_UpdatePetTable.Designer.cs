@@ -10,8 +10,8 @@ using PetAdopt.Data;
 namespace PetAdopt.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220425124753_Initial")]
-    partial class Initial
+    [Migration("20220426054441_UpdatePetTable")]
+    partial class UpdatePetTable
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -221,41 +221,33 @@ namespace PetAdopt.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("PetAdopt.Models.AdoptApplication", b =>
+            modelBuilder.Entity("PetAdopt.Models.AdoptPet", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("ChildrenAges")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ChildrenAtHome")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool>("ChildrenAtHome")
+                        .HasColumnType("bit");
 
-                    b.Property<DateTime>("DateApproved")
+                    b.Property<DateTime?>("DateApproved")
                         .HasColumnType("datetime2");
-
-                    b.Property<string>("DateDeleted")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("DateRegistered")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("DateRejected")
-                        .HasColumnType("datetime2");
+                    b.Property<double>("EmergencyEstimateExpense")
+                        .HasColumnType("float");
 
-                    b.Property<string>("EmergencyEstimateExpense")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<double>("FoodEstimateExpense")
+                        .HasColumnType("float");
 
-                    b.Property<string>("FoodEstimateExpense")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("HomeAntiguety")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("HomeAntiguety")
+                        .HasColumnType("int");
 
                     b.Property<string>("Initials14DaysReturn")
                         .IsRequired()
@@ -277,50 +269,42 @@ namespace PetAdopt.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("LandlordConsentForPets")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool>("LandlordConsentForPets")
+                        .HasColumnType("bit");
 
                     b.Property<string>("LandlordInformation")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("MedicalEstimateExpense")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<double>("MedicalEstimateExpense")
+                        .HasColumnType("float");
 
-                    b.Property<string>("MiscEstimateExpense")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<double>("MiscEstimateExpense")
+                        .HasColumnType("float");
 
-                    b.Property<string>("MovingNextSixMonths")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool>("MovingNextSixMonths")
+                        .HasColumnType("bit");
 
-                    b.Property<string>("PeopleAtHome")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("PeopleAtHome")
+                        .HasColumnType("int");
 
-                    b.Property<string>("PetId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("PetId")
+                        .HasColumnType("int");
 
-                    b.Property<string>("PetIsAGift")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool>("PetIsAGift")
+                        .HasColumnType("bit");
 
                     b.Property<string>("SignatureApplication")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Status")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
 
-                    b.Property<string>("Strata")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool>("Strata")
+                        .HasColumnType("bit");
 
-                    b.Property<string>("TimeThoughtToGetAPet")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("TimeThoughtToGetAPet")
+                        .HasColumnType("int");
 
                     b.Property<string>("WhyAPet")
                         .IsRequired()
@@ -339,74 +323,57 @@ namespace PetAdopt.Data.Migrations
 
             modelBuilder.Entity("PetAdopt.Models.Pet", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Adopted")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Adopted")
+                        .HasColumnType("int");
 
-                    b.Property<string>("AdoptionFee")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<double?>("AdoptionFee")
+                        .HasColumnType("float");
 
-                    b.Property<string>("Age")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int?>("Age")
+                        .HasColumnType("int");
 
                     b.Property<string>("Breed")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(50)")
+                        .HasMaxLength(50);
 
                     b.Property<string>("Color")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("DateAdopted")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("DateDeleted")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("DateRegistered")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(50)")
+                        .HasMaxLength(50);
 
                     b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(200)")
+                        .HasMaxLength(200);
 
-                    b.Property<string>("Gender")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Gender")
+                        .HasColumnType("int");
 
-                    b.Property<string>("HouseTrained")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool>("HouseTrained")
+                        .HasColumnType("bit");
 
                     b.Property<string>("Location")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(50)")
+                        .HasMaxLength(50);
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(150)")
+                        .HasMaxLength(150);
 
-                    b.Property<string>("PetType")
+                    b.Property<string>("PhotoURL")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("PhotoUrl")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Size")
+                        .HasColumnType("int");
 
-                    b.Property<string>("Size")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Status")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Type")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -464,7 +431,7 @@ namespace PetAdopt.Data.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("PetAdopt.Models.AdoptApplication", b =>
+            modelBuilder.Entity("PetAdopt.Models.AdoptPet", b =>
                 {
                     b.HasOne("PetAdopt.Models.Pet", "Pet")
                         .WithMany()
