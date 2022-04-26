@@ -7,10 +7,10 @@ using Microsoft.AspNetCore.Identity;
 
 namespace PetAdopt.Models
 {
-    public class AdoptPet
+    public class AdoptionForm
     {
         #region Constructor
-        public AdoptPet()
+        public AdoptionForm()
         {
 
         }

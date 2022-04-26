@@ -54,7 +54,7 @@ namespace PetAdopt.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Status,DateRegistered")] AdoptPet adoptPet)
+        public async Task<IActionResult> Create([Bind("Id,Status,DateRegistered")] AdoptionForm adoptPet)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +86,7 @@ namespace PetAdopt.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Status,DateRegistered")] AdoptPet adoptPet)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Status,DateRegistered")] AdoptionForm adoptPet)
         {
             if (id != adoptPet.Id)
             {

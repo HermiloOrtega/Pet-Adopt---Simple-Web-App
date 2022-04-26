@@ -51,9 +51,9 @@ namespace PetAdopt.Controllers
         {
             if (ModelState.IsValid)
             {
-                AdoptPet adopt = new AdoptPet();
+                AdoptionForm adopt = new AdoptionForm();
 
-                adopt.Status = (AdoptPet.ApplicationStatus)viewModel.Status;
+                adopt.Status = (AdoptionForm.ApplicationStatus)viewModel.Status;
                 adopt.DateRegistered = viewModel.DateRegistered;
 
                 Pet pet = await _context.Pet.FirstOrDefaultAsync(m => m.Id == viewModel.PetID);
@@ -73,7 +73,7 @@ namespace PetAdopt.Controllers
             PetDetailsViewModel viewModel = new PetDetailsViewModel();
             viewModel.Pet = pet;
 
-            List<AdoptPet> adoptPets = await _context.AdoptApplication
+            List<AdoptionForm> adoptPets = await _context.AdoptApplication
                 .Where(m => m.Pet == pet).ToListAsync();
 
             viewModel.AdoptPets = adoptPets;
