@@ -1,7 +1,4 @@
-# Welcome to SilverPOS Web App - Interview
-
-## Objective
-As the next phase of our recruitment process, we would like for you to develop Demo **Web app** that **accepts customer information** that is **filled in by the end-user**
+# Pet Adopt Web App
 
 <br>
 
